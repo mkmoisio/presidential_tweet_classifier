@@ -4,3 +4,4 @@ bin/
 lib/
 proj.code-workspace
 pyvenv.cfg
+.vscode
