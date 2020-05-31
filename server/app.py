@@ -25,11 +25,11 @@ def classify():
 
 
     X = svd.transform(array)
-    
+
     prediction = clf.predict(X)
     if prediction[0] == 1:
         return 'Donny!'
-    else return 'Mike!'    
+    else: return 'Mike!'    
 
 
 
