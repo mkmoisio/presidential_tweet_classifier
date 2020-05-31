@@ -5,3 +5,4 @@ lib/
 proj.code-workspace
 pyvenv.cfg
 .vscode
+server/__pycache__/

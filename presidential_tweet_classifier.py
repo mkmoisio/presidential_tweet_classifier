@@ -2,6 +2,7 @@ import json
 import spacy
 from spacy.tokens import DocBin
 import numpy as np
+import pickle
 
 nlp = spacy.load('en_core_web_sm')
 
@@ -77,17 +78,17 @@ def lemma2index(docs):
     #print(len(index))
     return index
 
-def construct_matrix(docs, features_index):
-    array = np.zeros(shape = (len(docs), len(features_index)))
+def construct_matrix(docs, feature_index):
+    array = np.zeros(shape = (len(docs), len(feature_index)))
 
     sample_idx = 0
     for doc in docs:
-        tokens = list(filter(is_valid, doc))
+       # tokens = list(filter(is_valid, doc))
         lemmas = set([token.lemma for token in doc])
         for lemma in lemmas:
             try:
                 #print(features_index[lemma])
-                array[sample_idx, features_index[lemma]] = 1
+                array[sample_idx, feature_index[lemma]] = 1
             except:
                 pass
         sample_idx += 1
@@ -102,7 +103,7 @@ index = lemma2index(docs)
 array = construct_matrix(docs, index)
 
 from sklearn.decomposition import TruncatedSVD
-svd = TruncatedSVD(n_components=100, n_iter=7, random_state=42)
+svd = TruncatedSVD(n_components=100, n_iter= 15, random_state=42)
 X = svd.fit_transform(array)
 y = np.concatenate((np.zeros(shape = (8000, )), np.ones(shape = (8000, ))))
 
@@ -124,3 +125,6 @@ X_test = svd.transform(trump_array)
 results = clf.predict(X_test)
 print('Percentage of Donny\'s tweets classified as Donny\'s (' + str(len(results)) + ' samples):', np.sum(results) * 100 / len(results), '%')
 
+pickle.dump(clf, open('svc', mode = 'wb'))
+pickle.dump(svd, open('svd', mode = 'wb'))
+pickle.dump(index, open('feature_index', mode = 'wb'))    
