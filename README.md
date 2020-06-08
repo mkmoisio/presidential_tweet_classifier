@@ -2,7 +2,7 @@
 
 ## scraper.py
 
-A wrapper for GetOldTweets3 to get around Twitter limits . Queries all tweets for Twitter users 'realDonaldTrump' and 'MikeBloomberg' or usernames in a file if -u flag given.
+A wrapper for GetOldTweets3 to get around Twitter limits . Queries all tweets for Twitter users 'realDonaldTrump' and 'MikeBloomberg' or users listed in a file if flag -u given.
 
 ## presidential_tweet_classifier.py
 
