@@ -13,7 +13,7 @@ Creation pipleline:
 1. Filter samples (tweets) so that very short messages are thrown away. 100 characters default threshold.
 2. Samples are tokenized and lemmatized. Non-alpha tokens and stop words are removed. Also tokens with no lemma found (that is, words not in the English vocabulary) are removed.
 3. Each sample is converted to numeric. The result is a N x F matrix in which N is the amount of samples and F is the amount of features.
-4. Dimensionality reduction is applied so that the result is N x $\tilde{F}$ matrix where $\tilde{F}$ = 100. Original F was around 30000. Dimensionality reduction is truncated singular value decomposition.
+4. Dimensionality reduction is applied so that the result is N x <img src="https://render.githubusercontent.com/render/math?math=\tilde{F}"> matrix where $\tilde{F}$ = 100. Original F was around 30000. Dimensionality reduction is truncated singular value decomposition.
 5. An SVC (C-Support Vector Classifier) is fitted with with data generated with SVD
 
 Steps to obtain classifications:
