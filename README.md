@@ -1,5 +1,7 @@
 # tweet classifier
 
+This is a toy solution to a toy problem. 
+
 ## scraper.py
 
 A wrapper for GetOldTweets3 to get around Twitter limits . Queries all tweets for Twitter users 'realDonaldTrump' and 'MikeBloomberg' or users listed in a file if flag -u given.
@@ -21,3 +23,9 @@ Steps to obtain classifications:
 1. Repeat steps 1 - 3 for unseen sample(s).
 2. Transform the sample(s) with SVD fitted in step 4.
 3. Obtain results from SVC.
+
+## Server
+
+Finally, server/ has a simple flask web server which should be capable of responding to http requests querying for predicted author for some specigic tweet. server/saved_objects has prefitted objects of required models. 
+
+
