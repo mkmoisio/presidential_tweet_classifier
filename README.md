@@ -10,7 +10,7 @@ A wrapper for GetOldTweets3 to get around Twitter limits . Queries all tweets fo
 
 A script which cleans scraped tweets and implements a simple NLP pipleline fitting models allowing prediction of the author of tweets.
 
-Creation pipleline:
+Creation pipeline:
 
 1. Filter samples (tweets) so that very short messages are thrown away. 100 characters default threshold.
 2. Samples are tokenized and lemmatized. Non-alpha tokens and stop words are removed. Also tokens with no lemma found (that is, words not in the English vocabulary) are removed.
