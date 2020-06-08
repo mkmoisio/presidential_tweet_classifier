@@ -36,14 +36,9 @@ def classify():
 if __name__ == '__main__':
     nlp = spacy.load('en_core_web_sm')
 
-    with open('./svc', 'rb') as f: # Support vector classifier
-        clf = pickle.load(f)
-
-    with open('./svd', 'rb') as f: # Singluar value decomposition
-        svd = pickle.load(f)
-
-    with open('./feature_index', 'rb') as f:
-        feature_index = pickle.load(f)
+    clf = pickle.load(open('./svc', 'rb'))
+    svd = pickle.load(open('./svd', 'rb'))
+    feature_index = pickle.load(open('./feature_index', 'rb'))
 
 
-app.run(debug=True)
+app.run(debug=False)
