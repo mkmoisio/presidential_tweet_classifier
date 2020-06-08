@@ -1,4 +1,5 @@
 from flask import Flask, request
+from waitress import serve
 import pickle
 import sklearn
 import spacy
@@ -36,9 +37,8 @@ def classify():
 if __name__ == '__main__':
     nlp = spacy.load('en_core_web_sm')
 
-    clf = pickle.load(open('./svc', 'rb'))
-    svd = pickle.load(open('./svd', 'rb'))
-    feature_index = pickle.load(open('./feature_index', 'rb'))
+    clf = pickle.load(open('./svc.bin', 'rb'))
+    svd = pickle.load(open('./svd.bin', 'rb'))
+    feature_index = pickle.load(open('./feature_index.bin', 'rb'))
+    serve(app, listen='*:5000')
 
-
-app.run(debug=False)
