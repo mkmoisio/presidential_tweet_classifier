@@ -3,7 +3,7 @@ from waitress import serve
 import pickle
 import sklearn
 import spacy
-import numpy as np 
+import numpy as np
 app = Flask(__name__)
 
 
@@ -29,16 +29,22 @@ def classify():
 
     prediction = clf.predict(X)
     if prediction[0] == 1:
-        return 'Donny!'
-    else: return 'Mike!'    
+        return (
+            {"author": "Donny"}
+            )
+
+    else: 
+        return (
+            {"author": "Mike"}
+            )
 
 
 
 if __name__ == '__main__':
     nlp = spacy.load('en_core_web_sm')
 
-    clf = pickle.load(open('./svc.bin', 'rb'))
-    svd = pickle.load(open('./svd.bin', 'rb'))
-    feature_index = pickle.load(open('./feature_index.bin', 'rb'))
+    clf = pickle.load(open('./saved_objects/svc.bin', 'rb'))
+    svd = pickle.load(open('./saved_objects/svd.bin', 'rb'))
+    feature_index = pickle.load(open('./saved_objects/feature_index.bin', 'rb'))
     serve(app, listen='*:5000')
 
